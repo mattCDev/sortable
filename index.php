@@ -96,7 +96,7 @@ class listingFilter{
 		$listing_id			= 0;					//listing index in listings array (for look-up);
 		
 		$fh = fopen($file, 'r') or die('Listings file DNE.');
-		$fh2 = fopen('missed.txt', 'w');
+		//$fh2 = fopen('missed.txt', 'w');
 		
 		$start_time = date('U');
 		$eos = 0;
@@ -154,8 +154,7 @@ class listingFilter{
 					if($family_matches_arr[0] == 'digital ixus'){
 						$ixus++;
 					}
-					//echo $listing_title_LC . '<br />';
-					//echo '>>> FAM = ' . $family_matches . ' :: ' . print_r($family_matches_arr, true) . '<br />';
+					
 				}
 				
 				//make sure no multiple family matches
@@ -230,7 +229,7 @@ class listingFilter{
 			}
 
 			if(!$match){
-				fwrite($fh2, $listing_id . ' : ' . $listing_title_LC . "\r\n");
+				//fwrite($fh2, $listing_id . ' : ' . $listing_title_LC . "\r\n");
 			}
 			
 			$listing_id++;
@@ -240,7 +239,7 @@ class listingFilter{
 		$end_time = date('U');
 		
 		fclose($fh);
-		fclose($fh2);
+		//fclose($fh2);
 
 		return ($end_time - $start_time);
 		
@@ -284,7 +283,6 @@ class listingFilter{
 		echo 'Parsed ' . $this->_listings . ' listings.. Matched ' . $this->_found . ' in ' . $this->_time . ' seconds. ';
 		
 		//echo '<br />' . print_r($this->_terms, true);
-
 	}
 
 
